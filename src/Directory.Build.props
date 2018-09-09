@@ -1,0 +1,12 @@
+<Project>
+  <PropertyGroup>
+    <!--https://developercommunity.visualstudio.com/content/problem/30940/cant-remove-netstandard-folder-from-output-path.html-->
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <!--dot net projects-->
+    <BaseIntermediateOutputPath>..\..\build\obj\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</BaseIntermediateOutputPath>
+    <OutputPath>..\..\build\bin\$(Configuration)\</OutputPath>
+    <!--c++ projects-->
+    <OutDir>..\..\build\bin\$(Configuration)\</OutDir>
+    <IntDir>..\..\build\obj\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+</Project>
