@@ -39,13 +39,13 @@ namespace ManagedModel
 
     public class Model
     {
-        public Result Run(double volume, double rotationSpeed, double clearanceHeight)
+        public Result Run(double v1, double v2, double v3)
         {
             var data = new InputData()
             {
-                V1 = clearanceHeight,
-                V2 = rotationSpeed,
-                V3 = volume
+                V1 = v1,
+                V2 = v2,
+                V3 = v3
             };
 
             if (Environment.Is64BitProcess)
