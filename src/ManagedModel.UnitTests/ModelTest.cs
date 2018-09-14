@@ -25,5 +25,12 @@ namespace ManagedModel
         {
             Assert.That(model.Run(1, 1, 3).Product, Is.EqualTo(3));
         }
+
+        [Test]
+        public void Run_ShouldThrow_Throws()
+        {
+            model.ShouldThrow = true;
+            Assert.Throws<Exception>(() => model.Run(1, 1, 3));
+        }
     }
 }
