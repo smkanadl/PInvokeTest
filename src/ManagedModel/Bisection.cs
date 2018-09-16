@@ -5,13 +5,16 @@ using System.Text;
 
 namespace ManagedModel
 {
+    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    internal delegate double Function(double value);
+
     [StructLayout(LayoutKind.Sequential)]
     internal struct Input
     {
         public double Lower;
         public double Upper;
         public int MaxIterations;
-        public IntPtr f;
+        public Function f;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -35,16 +38,13 @@ namespace ManagedModel
     public class Bisection
     {
         private Input input;
-        private delegate double Function(double value);
 
         public Bisection(Func<double, double> function)
         {
-            var d = new Function(function);
-            GC.KeepAlive(d);
-            var ptr = Marshal.GetFunctionPointerForDelegate(d);
+            GC.KeepAlive(function);
             input = new Input()
             {
-                f = ptr
+                f = new Function(function)
             };
         }
 

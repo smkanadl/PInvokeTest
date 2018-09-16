@@ -3,12 +3,14 @@
 
 extern "C"
 {
+    using FunctionPtr = std::add_pointer_t<double __stdcall (double)>;
+
     typedef struct
     {
         double lower;
         double upper;
         int iterations;
-        void* f;
+        FunctionPtr f;
     } InputDataBisection;
 
     typedef struct
@@ -22,11 +24,8 @@ extern "C"
         using namespace boost::math::tools;
         try
         {
-            using FunctionPtr = std::add_pointer_t<double __stdcall (double)>;
-            auto func = (FunctionPtr)input.f;
-            
             boost::uintmax_t it = input.iterations;
-            auto root = toms748_solve(func, input.lower, input.upper, eps_tolerance<double>{ 48 }, it);
+            auto root = toms748_solve(input.f, input.lower, input.upper, eps_tolerance<double>{ 48 }, it);
             result.root = root.first;
         }
         catch (std::exception&)
