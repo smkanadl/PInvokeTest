@@ -10,7 +10,7 @@ namespace FullApp
     {
         static void Main(string[] args)
         {
-            var bisection = new ManagedModel.Bisection(x => x);
+            var bisection = new ManagedModel.Bisection(x => x - 1);
             bisection.Lower = -1;
             bisection.Upper = 1;
             bisection.MaxIterations = 100;
