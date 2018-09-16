@@ -9,15 +9,15 @@ extern "C"
         double v2;
         double v3;
         bool shouldThrow;
-    } InputData;
+    } InputDataModel;
 
     typedef struct
     {
         double sum;
         double product;
-    } ResultData;
+    } ResultDataModel;
 
-    __declspec(dllexport) int __stdcall RunModel(InputData data, ResultData& result) noexcept
+    __declspec(dllexport) int __stdcall RunModel(InputDataModel data, ResultDataModel& result) noexcept
     {
         try
         {

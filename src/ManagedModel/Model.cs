@@ -22,13 +22,13 @@ namespace ManagedModel
     internal static class ModelImport64
     {
         [DllImport("NativeModel64")]
-        public static extern int RunModel(InputData data, out ResultData result);
+        public static extern int RunModel(InputData data, ref ResultData result);
     }
 
     internal static class ModelImport32
     {
         [DllImport("NativeModel32")]
-        public static extern int RunModel(InputData data, out ResultData result);
+        public static extern int RunModel(InputData data, ref ResultData result);
     }
 
     public class Result
@@ -51,25 +51,26 @@ namespace ManagedModel
                 V3 = v3,
                 ShouldThrow = ShouldThrow
             };
-            
+
+            var result = new ResultData();
+
             if (Environment.Is64BitProcess)
             {
-                var e = ModelImport64.RunModel(data, out var result);
+                var e = ModelImport64.RunModel(data, ref result);
                 if (e != 0)
                 {
                     throw new Exception("Boom by error code: " + e);
                 }
-                return From(result);
             }
             else
             {
-                var e = ModelImport32.RunModel(data, out var result);
+                var e = ModelImport32.RunModel(data, ref result);
                 if (e != 0)
                 {
                     throw new Exception("Boom by error code: " + e);
                 }
-                return From(result);
             }
+            return From(result);
         }
 
         private Result From(ResultData result)
