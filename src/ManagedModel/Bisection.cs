@@ -41,7 +41,6 @@ namespace ManagedModel
 
         public Bisection(Func<double, double> function)
         {
-            GC.KeepAlive(function);
             input = new Input()
             {
                 f = new Function(function)
@@ -85,6 +84,7 @@ namespace ManagedModel
                     throw new Exception("Boom by error code: " + e);
                 }
             }
+            GC.KeepAlive(input);
             return result.Root;
         }
     }
