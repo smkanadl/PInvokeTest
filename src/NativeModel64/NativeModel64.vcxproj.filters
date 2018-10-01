@@ -13,6 +13,9 @@
     <ClCompile Include="..\NativeModel\Bisection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\NativeModel\SystemOfLinearEquations.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
