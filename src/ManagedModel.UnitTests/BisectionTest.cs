@@ -40,5 +40,16 @@ namespace ManagedModel
 
             Assert.That(root, Is.EqualTo(1.0).Within(0.00001));
         }
+
+        [Test]
+        public void FindRoot_Throws()
+        {
+            bisection = new Bisection(x => x);
+            bisection.Lower = 1.01;
+            bisection.Upper = 2;
+            bisection.MaxIterations = 100;
+
+            Assert.Throws<Exception>(() => bisection.FindRoot());
+        }
     }
 }
