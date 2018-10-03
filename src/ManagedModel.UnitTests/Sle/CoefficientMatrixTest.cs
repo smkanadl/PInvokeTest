@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 
-namespace ManagedModel
+namespace ManagedModel.Sle
 {
     [TestFixture]
     public class CoefficientMatrixTest

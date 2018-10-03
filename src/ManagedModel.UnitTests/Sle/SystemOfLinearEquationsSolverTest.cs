@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 
-namespace ManagedModel
+namespace ManagedModel.Sle
 {
-    public class SystemOfLinearEquationsSolverTestExamples
+    internal static class SystemOfLinearEquationsSolverTestExamples
     {
         private static CoefficientMatrix CreateMatrixWithSize(int size, double defaultValue = 0.0)
         {
