@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace ManagedModel.Sle.Details
 {
-    internal static class MatrixDllImport64
+    internal static class MatrixDllImport32
     {
         private const string dllName = "NativeModel64";
 

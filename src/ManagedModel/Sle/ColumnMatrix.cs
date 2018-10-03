@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ManagedModel.Sle.Details;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,7 +10,7 @@ namespace ManagedModel.Sle
         public ColumnMatrix(int size, double initialValue)
         {
             Size = size;
-            Handle = MatrixDllImport64.Create(size, 1, initialValue);
+            Handle = MatrixDllImport.Create(size, 1, initialValue);
         }
 
         public ColumnMatrix(IReadOnlyList<double> values)
@@ -23,19 +24,19 @@ namespace ManagedModel.Sle
 
         public void Dispose()
         {
-            MatrixDllImport64.Free(Handle);
+            MatrixDllImport.Free(Handle);
         }
 
         public double GetValue(int row)
         {
             var value = 0.0;
-            MatrixDllImport64.Get(Handle, row, 0, ref value);
+            MatrixDllImport.Get(Handle, row, 0, ref value);
             return value;
         }
 
         public void SetValue(int row, double value)
         {
-            MatrixDllImport64.Set(Handle, row, 0, value);
+            MatrixDllImport.Set(Handle, row, 0, value);
         }
 
         public IEnumerator<double> GetEnumerator()

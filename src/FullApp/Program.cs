@@ -16,6 +16,9 @@ namespace FullApp
             bisection.MaxIterations = 100;
 
             var root = bisection.FindRoot();
+
+            var matrix = new ManagedModel.Sle.CoefficientMatrix(3, 1.0);
+            Console.WriteLine("Matrix is: " + matrix.ToString());
         }
     }
 }

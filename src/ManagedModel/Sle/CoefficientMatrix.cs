@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ManagedModel.Sle.Details;
+using System;
 using System.Text;
 
 namespace ManagedModel.Sle
@@ -8,24 +9,24 @@ namespace ManagedModel.Sle
         public CoefficientMatrix(int size, double initialValue)
         {
             Size = size;
-            Handle = MatrixDllImport64.Create(size, size, initialValue);
+            Handle = MatrixDllImport.Create(size, size, initialValue);
         }
 
         public void Dispose()
         {
-            MatrixDllImport64.Free(Handle);
+            MatrixDllImport.Free(Handle);
         }
 
         public double GetValue(int row, int column)
         {
             var value = 0.0;
-            MatrixDllImport64.Get(Handle, row, column, ref value);
+            MatrixDllImport.Get(Handle, row, column, ref value);
             return value;
         }
 
         public void SetValue(int row, int column, double value)
         {
-            MatrixDllImport64.Set(Handle, row, column, value);
+            MatrixDllImport.Set(Handle, row, column, value);
         }
 
         public double this[int row, int column]

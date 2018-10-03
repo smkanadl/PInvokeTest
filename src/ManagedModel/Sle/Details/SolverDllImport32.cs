@@ -5,9 +5,9 @@ using System.Text;
 
 namespace ManagedModel.Sle.Details
 {
-    internal static class SolverDllImport64
+    internal static class SolverDllImport32
     {
-        private const string dllName = "NativeModel64";
+        private const string dllName = "NativeModel32";
 
         [DllImport(dllName)]
         public static extern int Solve(IntPtr matrix, IntPtr result, IntPtr solution);

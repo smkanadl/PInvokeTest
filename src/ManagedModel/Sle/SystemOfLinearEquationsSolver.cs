@@ -27,7 +27,7 @@ namespace ManagedModel.Sle
         public Solution Solve()
         {
             var columnMatrix = new ColumnMatrix(RightHandSide.Size, 0.0);
-            var result = SolverDllImport64.Solve(CoefficientMatrix.Handle, RightHandSide.Handle, columnMatrix.Handle);
+            var result = SolverDllImport.Solve(CoefficientMatrix.Handle, RightHandSide.Handle, columnMatrix.Handle);
             Solution = new Solution(columnMatrix, (SolveResult)result);
             return Solution;
         }
