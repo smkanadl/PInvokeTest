@@ -5,7 +5,7 @@ namespace ManagedModel.Sle.Details
 {
     internal static class MatrixDllImport32
     {
-        private const string dllName = "NativeModel64";
+        private const string dllName = "NativeModel32";
 
         [DllImport(dllName)]
         public static extern IntPtr Create(int rows, int columns, double initialValue);
