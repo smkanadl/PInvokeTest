@@ -1,11 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
-
+  
+  <ItemGroup>
+    <Content CopyToOutputDirectory="PreserveNewest" Include="../../build/bin/NativeModel32/$(Configuration)/NativeModel32.dll" Link="NativeModel32.dll" Pack="true" PackagePath="runtimes/win-x86/native/NativeModel32.dll" />
+    <Content CopyToOutputDirectory="PreserveNewest" Include="../../build/bin/NativeModel64/$(Configuration)/NativeModel64.dll" Link="NativeModel64.dll" Pack="true" PackagePath="runtimes/win-x64/native/NativeModel64.dll" />
+  </ItemGroup>
 </Project>

@@ -5,9 +5,9 @@
     <!--dot net projects-->
     <BaseIntermediateOutputPath>..\..\build\obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(Platform)\$(Configuration)\</IntermediateOutputPath>
-    <OutputPath>..\..\build\bin\$(Configuration)\</OutputPath>
+    <OutputPath>..\..\build\bin\$(MSBuildProjectName)\$(Configuration)\</OutputPath>
     <!--c++ projects-->
-    <OutDir>..\..\build\bin\$(Configuration)\</OutDir>
+    <OutDir>..\..\build\bin\$(MSBuildProjectName)\$(Configuration)\</OutDir>
     <IntDir>..\..\build\obj\$(MSBuildProjectName)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
 </Project>
