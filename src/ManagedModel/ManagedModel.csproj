@@ -9,8 +9,14 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   
+  <Target Name="CheckPreBuildContent" BeforeTargets="BeforeBuild">
+    <Error Condition="!Exists('../../build/bin/NativeModel32/$(Configuration)/NativeModel32.dll')" Text="Need to pre-build the native 32bit implemntation!" />
+    <Error Condition="!Exists('../../build/bin/NativeModel64/$(Configuration)/NativeModel64.dll')" Text="Need to pre-build the native 64bit implemntation!" />
+  </Target>
+  
   <ItemGroup>
     <Content CopyToOutputDirectory="PreserveNewest" Include="../../build/bin/NativeModel32/$(Configuration)/NativeModel32.dll" Link="NativeModel32.dll" Pack="true" PackagePath="runtimes/win-x86/native/NativeModel32.dll" />
     <Content CopyToOutputDirectory="PreserveNewest" Include="../../build/bin/NativeModel64/$(Configuration)/NativeModel64.dll" Link="NativeModel64.dll" Pack="true" PackagePath="runtimes/win-x64/native/NativeModel64.dll" />
   </ItemGroup>
+  
 </Project>
