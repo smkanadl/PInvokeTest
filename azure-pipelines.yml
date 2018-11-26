@@ -29,7 +29,12 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: NuGetCommand@2
+- task: CopyFiles@2
   inputs:
-    command: pack
-    packagesToPack: '**/ManagedModel.csproj'
+    contents: bin\**\*.nupkg
+    targetFolder: $(Build.ArtifactStagingDirectory)
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: 'drop'
