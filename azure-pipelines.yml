@@ -32,8 +32,8 @@ steps:
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(system.defaultworkingdirectory)'
-    contents: **\bin\**\*.nupkg
-    targetFolder: $(build.ArtifactStagingDirectory)
+    contents: '**\bin\**\*.nupkg'
+    targetFolder: '$(build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   inputs:
