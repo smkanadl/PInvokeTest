@@ -16,9 +16,19 @@ namespace
 
         return relativeError > RELATIVE_ERROR_THRESHOLD;
     }
+
+    struct Result
+    {
+        enum
+        {
+            Ok = 0,
+            Singular = 1,
+            Failed = 2
+        };
+    };
 }
 
-typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> matrix_impl_t;
+using matrix_impl_t = Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic>;
 
 struct _matrix
 {
@@ -64,19 +74,6 @@ int _stdcall Free(matrix_t* ctx) noexcept
 {
     delete ctx;
     return 0;
-}
-
-namespace
-{
-    struct Result
-    {
-        enum Impl
-        {
-            Ok = 0,
-            Singular = 1,
-            Failed = 2
-        };
-    };
 }
 
 int _stdcall Solve(matrix_t* A, matrix_t* result, matrix_t* solution) noexcept
